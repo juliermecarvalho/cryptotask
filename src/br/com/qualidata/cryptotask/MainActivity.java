@@ -1,5 +1,9 @@
 package br.com.qualidata.cryptotask;
 
+
+
+
+
 import java.sql.SQLException;
 
 import br.com.qualidata.dao.Instalacao;
@@ -11,19 +15,20 @@ import br.com.qualidata.repositorio.RepositorioMensagem;
 import br.com.qualidata.repositorio.RepositorioPessoa;
 import br.com.qualidata.repositorio.RepositorioTarefa;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.util.Log;
-import android.view.Menu;
-import android.widget.TextView;
+import com.googlecode.androidannotations.annotations.Click;
+import com.googlecode.androidannotations.annotations.EActivity;
 
+
+import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
+
+
+@EActivity(R.layout.activity_main)
 public class MainActivity extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-
+	@Click(R.id.btnProsseguir)
+	void irParaSenha(){		
 		try {
 			RepositorioPessoa helpe = new RepositorioPessoa(
 					getApplicationContext());
@@ -59,21 +64,17 @@ public class MainActivity extends Activity {
 			 * List<Pessoa> list = helpe.getAll(); String i = ""; for (Pessoa p
 			 * : list) { i = i + " - " + String.valueOf(p.getId()); }
 			 */
-			TextView txt = (TextView) findViewById(R.id.txt);
-			txt.setText(String.valueOf(instalacao.getId()));
+			//TextView txt = (TextView) findViewById(R.id.txt);
+			//txt.setText(String.valueOf(instalacao.getId()));
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			Log.e("Julierme", "Database exception", e);
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+		Intent intent = new Intent(getBaseContext(), PasswordActivity_.class);
+		startActivity(intent);
+		
 	}
 
 }
