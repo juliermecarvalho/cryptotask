@@ -13,8 +13,7 @@ import br.com.qualidata.dao.Pessoa;
 
 public class Serializer {
 
-	public static List<Pessoa> DeserializePessoa(String jsonArray)
-			throws JSONException {
+	public static List<Pessoa> DeserializePessoa(String jsonArray)	throws JSONException {
 		JSONArray array = new JSONArray(jsonArray);
 		JSONObject jsonObject;
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
@@ -34,6 +33,30 @@ public class Serializer {
 		}
 
 		return pessoas;
+	}
+
+	public static String SerializerPessoa(Pessoa pessoa) throws JSONException {
+
+		JSONObject json = new JSONObject();
+
+		json.put("Id", String.valueOf(pessoa.getId()));
+		json.put("Cpf", pessoa.getCpf());
+		json.put("Nome", pessoa.getNome());
+		json.put("Funcao", pessoa.getFuncao());
+		json.put("Ativo", pessoa.getAtivo());
+		json.put("Perfil", pessoa.getPerfil().ordinal());
+
+		return String.valueOf(json);
+	}
+
+	public static String SerializerPessoa(List<Pessoa> pessoas)	throws JSONException {
+
+		ArrayList<String> list = new ArrayList<String>();
+		for (Pessoa pessoa : pessoas) {
+			list.add(SerializerPessoa(pessoa));
+		}
+
+		return String.valueOf(list);
 	}
 
 }

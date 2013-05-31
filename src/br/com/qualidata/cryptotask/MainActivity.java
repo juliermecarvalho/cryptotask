@@ -65,9 +65,12 @@ public class MainActivity extends Activity {
 			//List<Pessoa> pessoas = Serializer.DeserializePessoa(p);
 		   
 		
-			new SincronizaPessoasAsync(getApplicationContext()).			
-			execute("http://wscryptotaskqualidata.cryptotask.com/Sincronizador/Pessoas?dataHoraDaUltimaSincronizacao=2000-01-01");
-			
+			//new SincronizaPessoasAsync(getApplicationContext()).			
+			//execute("http://wscryptotaskqualidata.cryptotask.com/Sincronizador/Pessoas?dataHoraDaUltimaSincronizacao=2000-01-01");
+			RepositorioPessoa repositorioPessoa = new RepositorioPessoa(getApplicationContext());
+			List<Pessoa> pessoas = repositorioPessoa.getAll();
+			String json = Serializer.SerializerPessoa(pessoas);
+			Log.i("julierme", json);
 	/*		RepositorioPessoa repositorioPessoa = new RepositorioPessoa(getApplicationContext());
 			List<Pessoa> pessoas = repositorioPessoa.getAll();
 			for (Pessoa pessoa : pessoas) {

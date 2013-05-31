@@ -68,7 +68,7 @@ public abstract class Repositorio<Entity extends IDao> extends SQLiteOpenHelper 
 	}
 
 	protected void onCreate() throws SQLException {
-		
+
 		TableUtils.createTableIfNotExists(connectionSource, Pessoa.class);
 		TableUtils.createTableIfNotExists(connectionSource, Instalacao.class);
 		TableUtils.createTableIfNotExists(connectionSource, Tarefa.class);
@@ -101,11 +101,12 @@ public abstract class Repositorio<Entity extends IDao> extends SQLiteOpenHelper 
 
 	private void onUpgrade(int oldVersion, int newVersion) {
 		try {
-			
+
 			TableUtils.createTableIfNotExists(connectionSource, Pessoa.class);
-			TableUtils.createTableIfNotExists(connectionSource, Instalacao.class);
+			TableUtils.createTableIfNotExists(connectionSource,
+					Instalacao.class);
 			TableUtils.createTableIfNotExists(connectionSource, Tarefa.class);
-			TableUtils.createTableIfNotExists(connectionSource, Mensagem.class);	
+			TableUtils.createTableIfNotExists(connectionSource, Mensagem.class);
 			onCreate();
 		} catch (SQLException e) {
 			Log.e(Repositorio.class.getName(), "Can't drop databases", e);
@@ -119,6 +120,12 @@ public abstract class Repositorio<Entity extends IDao> extends SQLiteOpenHelper 
 
 	public void createOrUpdate(Entity entity) throws SQLException {
 		this.dao.createOrUpdate(entity);
+	}
+
+	public void createOrUpdate(List<Entity> entitys) throws SQLException {
+		for (Entity entity : entitys) {
+			this.dao.createOrUpdate(entity);
+		}
 	}
 
 	public void delete(Entity entity) throws SQLException {

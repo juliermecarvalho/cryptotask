@@ -7,14 +7,17 @@
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="17" />
-	<uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
- 			android:name="br.com.qualidata.cryptotask.MainActivity_"
+            android:name="br.com.qualidata.cryptotask.MainActivity_"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="br.com.qualidata.cryptotask.PasswordActivity_" ></activity>
+        <activity android:name="br.com.qualidata.cryptotask.PasswordActivity_" >
+        </activity>
     </application>
 
 </manifest>
