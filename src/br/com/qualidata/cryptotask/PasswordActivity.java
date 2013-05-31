@@ -1,6 +1,6 @@
 package br.com.qualidata.cryptotask;
 
-import br.com.qualidata.servico.ReadWeatherJSONFeedTask;
+
 
 
 import com.googlecode.androidannotations.annotations.Click;
@@ -27,8 +27,8 @@ public class PasswordActivity extends Activity {
 /*		new ReadWeatherJSONFeedTask(this)
 				.execute("http://wsServidorCentralCryptoTask.CryptoTask.com/Assinante/ObterUrlDoServidorCliente?conta=PMV" );*/
 		
-		new ReadWeatherJSONFeedTask(this)
-		.execute("http://wscryptotaskqualidata.cryptotask.com/Sincronizador/Pessoas?dataHoraDaUltimaSincronizacao=2000-01-01" );
+		/*new ReadWeatherJSONFeedTask(this)
+		.execute("http://wscryptotaskqualidata.cryptotask.com/Sincronizador/Pessoas?dataHoraDaUltimaSincronizacao=2000-01-01" );*/
 	}
 
 }

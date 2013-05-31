@@ -11,6 +11,7 @@ import br.com.qualidata.dao.Pessoa;
 
 import br.com.qualidata.repositorio.RepositorioPessoa;
 import br.com.qualidata.servico.Serializer;
+import br.com.qualidata.servico.SincronizaPessoasAsync;
 import br.com.qualidata.servico.WebService;
 
 import com.googlecode.androidannotations.annotations.Click;
@@ -56,20 +57,23 @@ public class MainActivity extends Activity {
 			 * repositorioMensagem.createOrUpdate(mensagem);
 			 */
 
-			WebService w = new WebService();
+			//WebService w = new WebService();
 			// JSONArray
 			// JSONObject
-			String p = w.post("http://wscryptotaskqualidata.cryptotask.com/Sincronizador/Pessoas?dataHoraDaUltimaSincronizacao=2000-01-01");
+			//String p = w.post("http://wscryptotaskqualidata.cryptotask.com/Sincronizador/Pessoas?dataHoraDaUltimaSincronizacao=2000-01-01");
 			
 			//List<Pessoa> pessoas = Serializer.DeserializePessoa(p);
 		   
+		
+			new SincronizaPessoasAsync(getApplicationContext()).			
+			execute("http://wscryptotaskqualidata.cryptotask.com/Sincronizador/Pessoas?dataHoraDaUltimaSincronizacao=2000-01-01");
 			
-			RepositorioPessoa repositorioPessoa = new RepositorioPessoa(getApplicationContext());
+	/*		RepositorioPessoa repositorioPessoa = new RepositorioPessoa(getApplicationContext());
 			List<Pessoa> pessoas = repositorioPessoa.getAll();
 			for (Pessoa pessoa : pessoas) {
 				Log.i("julierme", String.valueOf( pessoa.getId()));
 				//repositorioPessoa.createOrUpdate(pessoa);
-			}
+			}*/
 			
 			// Log.println(TRIM_MEMORY_COMPLETE, "oi", p);
 			// Log.println(TRIM_MEMORY_COMPLETE, "oi", p.split("}")[1]);
