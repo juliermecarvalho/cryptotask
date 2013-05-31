@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
 import br.com.qualidata.cryptotask.R.id;
 import br.com.qualidata.cryptotask.R.layout;
 
@@ -31,6 +32,7 @@ public final class MainActivity_
     }
 
     private void afterSetContentView_() {
+        edtConta = ((TextView) findViewById(id.edtConta));
         {
             View view = findViewById(id.btnProsseguir);
             if (view!= null) {

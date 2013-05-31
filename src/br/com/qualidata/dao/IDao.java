@@ -1,9 +1,11 @@
 package br.com.qualidata.dao;
 
 import java.util.Date;
+import java.util.UUID;
 
 public interface IDao {
-	int getId();
+	UUID getId();
+	void setId(UUID Id);
 
 	Date getDataDaUltimaAlteracao();
 

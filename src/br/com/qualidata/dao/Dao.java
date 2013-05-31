@@ -1,29 +1,37 @@
 package br.com.qualidata.dao;
 
 import java.util.Date;
+import java.util.UUID;
 
 import com.j256.ormlite.field.DatabaseField;
 
 public class Dao implements IDao {
 
-	@DatabaseField(generatedId = true)
-	private int id;
+	@DatabaseField(id = true)
+	private UUID Id;
 	@DatabaseField
-	private Date dataDaUltimaAlteracao;
+	private Date DataDaUltimaAlteracao;
 
 	@Override
-	public int getId() {
-		return id;
+	public UUID getId() {
+		return Id;
 	}
-
+	
+	@Override
+	public void setId(UUID Id) {
+		this.Id = Id;		
+	}
+	
 	@Override
 	public Date getDataDaUltimaAlteracao() {
-		return dataDaUltimaAlteracao;
+		return DataDaUltimaAlteracao;
 	}
 
 	@Override
-	public void setDataDaUltimaAlteracao(Date dataDaUltimaAlteracao) {
-		this.dataDaUltimaAlteracao = dataDaUltimaAlteracao;
+	public void setDataDaUltimaAlteracao(Date DataDaUltimaAlteracao) {
+		this.DataDaUltimaAlteracao = DataDaUltimaAlteracao;
 	}
+
+	
 
 }

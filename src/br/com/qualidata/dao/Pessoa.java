@@ -2,12 +2,14 @@ package br.com.qualidata.dao;
 
 import com.j256.ormlite.field.DatabaseField;
 
+
+
 public class Pessoa extends Dao {
 
 	@DatabaseField
-	private String cpf;
+	private String Cpf;
 	@DatabaseField
-	private String senha;
+	private String Senha;
 	@DatabaseField
 	private String Nome;
 	@DatabaseField
@@ -15,54 +17,54 @@ public class Pessoa extends Dao {
 	@DatabaseField
 	private Boolean Ativo;
 	@DatabaseField
-	private Perfil perfil;
+	private Perfil Perfil;
 
 	public String getCpf() {
-		return cpf;
+		return Cpf;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCpf(String Cpf) {
+		this.Cpf = Cpf;
 	}
 
 	public String getSenha() {
-		return senha;
+		return Senha;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setSenha(String Senha) {
+		this.Senha = Senha;
 	}
 
 	public String getNome() {
 		return Nome;
 	}
 
-	public void setNome(String nome) {
-		Nome = nome;
+	public void setNome(String Nome) {
+		this.Nome = Nome;
 	}
 
 	public String getFuncao() {
 		return Funcao;
 	}
 
-	public void setFuncao(String funcao) {
-		Funcao = funcao;
+	public void setFuncao(String Funcao) {
+		this.Funcao = Funcao;
 	}
 
 	public Boolean getAtivo() {
 		return Ativo;
 	}
 
-	public void setAtivo(Boolean ativo) {
-		Ativo = ativo;
+	public void setAtivo(Boolean Ativo) {
+		this.Ativo = Ativo;
 	}
 
 	public Perfil getPerfil() {
-		return perfil;
+		return Perfil;
 	}
 
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
+	public void setPerfil(Perfil Perfil) {
+		this.Perfil = Perfil;
 	}
 
 }

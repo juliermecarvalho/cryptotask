@@ -2,6 +2,7 @@ package br.com.qualidata.repositorio;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 
 import br.com.qualidata.dao.IDao;
 import br.com.qualidata.dao.Instalacao;
@@ -29,7 +30,7 @@ public abstract class Repositorio<Entity extends IDao> extends SQLiteOpenHelper 
 
 	private static final String DATABASE_NAME = "cryptotask.db";
 	private static final int DATABASE_VERSION = 1;
-	protected Dao<Entity, Integer> dao;
+	protected Dao<Entity, UUID> dao;
 	protected Class<Entity> type;
 
 	public Repositorio(Context context, Class<Entity> type) throws SQLException {
@@ -67,7 +68,7 @@ public abstract class Repositorio<Entity extends IDao> extends SQLiteOpenHelper 
 	}
 
 	protected void onCreate() throws SQLException {
-		Log.i(Repositorio.class.getName(), "onCreate");
+		
 		TableUtils.createTableIfNotExists(connectionSource, Pessoa.class);
 		TableUtils.createTableIfNotExists(connectionSource, Instalacao.class);
 		TableUtils.createTableIfNotExists(connectionSource, Tarefa.class);
@@ -100,11 +101,11 @@ public abstract class Repositorio<Entity extends IDao> extends SQLiteOpenHelper 
 
 	private void onUpgrade(int oldVersion, int newVersion) {
 		try {
-			Log.i(Repositorio.class.getName(), "onUpgrade");
-			TableUtils.createTableIfNotExists(connectionSource, Mensagem.class);
-			TableUtils.createTableIfNotExists(connectionSource, Tarefa.class);
+			
+			TableUtils.createTableIfNotExists(connectionSource, Pessoa.class);
 			TableUtils.createTableIfNotExists(connectionSource, Instalacao.class);
-			TableUtils.createTableIfNotExists(connectionSource, Pessoa.class);			
+			TableUtils.createTableIfNotExists(connectionSource, Tarefa.class);
+			TableUtils.createTableIfNotExists(connectionSource, Mensagem.class);	
 			onCreate();
 		} catch (SQLException e) {
 			Log.e(Repositorio.class.getName(), "Can't drop databases", e);
@@ -126,13 +127,13 @@ public abstract class Repositorio<Entity extends IDao> extends SQLiteOpenHelper 
 		}
 	}
 
-	public void deleteById(int id) throws SQLException {
+	public void deleteById(UUID id) throws SQLException {
 		if (this.dao.idExists(id)) {
 			this.dao.deleteById(id);
 		}
 	}
 
-	public Entity getById(int id) throws SQLException {
+	public Entity getById(UUID id) throws SQLException {
 		return this.dao.queryForId(id);
 	}
 
